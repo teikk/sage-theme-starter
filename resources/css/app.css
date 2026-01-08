@@ -1,67 +1,9 @@
 @import "tailwindcss" theme(static);
+@import "./layers/base.css";
 @import "./layers/utilities.css";
 @source "../views/";
 @source "../../app/";
 
 @theme {
   --container-spacing: --spacing(4);
-}
-
-/* Grid layout inspired by
-https://smolcss.dev/#smol-breakout-grid
-https://ryanmulligan.dev/blog/layout-breakouts/
-https://www.youtube.com/watch?v=c13gpBrnGEw
- */
-@utility content-grid {
-  --gap: var(--container-spacing);
-  --full: minmax(var(--gap), 1fr);
-  --content-width: --spacing(92);
-  --content: min(var(--content-width), 100% - var(--gap) * 2);
-  --popout: minmax(0, --spacing(8));
-  --feature: minmax(0, --spacing(16));
-
-  display: grid;
-  grid-template-columns:
-    [full-start] var(--full)
-    [feature-start] var(--feature)
-    [popout-start] var(--popout)
-    [content-start] var(--content) [content-end]
-    var(--popout) [popout-end]
-    var(--feature) [feature-end]
-    var(--full) [full-end];
-
-  & > * {
-    grid-column: content;
-  }
-  @media (min-width: theme(--breakpoint-sm)) {
-    --content-width: theme(--breakpoint-sm);
-  }
-  @media (min-width: theme(--breakpoint-md)) {
-    --content-width: theme(--breakpoint-md);
-  }
-  @media (min-width: theme(--breakpoint-lg)) {
-    --content-width: theme(--breakpoint-lg);
-  }
-  @media (min-width: theme(--breakpoint-xl)) {
-    --content-width: theme(--breakpoint-xl);
-  }
-  @media (min-width: theme(--breakpoint-2xl)) {
-    --content-width: theme(--breakpoint-2xl);
-  }
-}
-
-@utility content {
-  grid-column: content;
-}
-
-@utility popout {
-  grid-column: popout;
-}
-
-@utility feature {
-  grid-column: feature;
-}
-
-@utility full {
-  grid-column: full;
 }
