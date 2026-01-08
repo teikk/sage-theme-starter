@@ -19,18 +19,13 @@
 
       @include('sections.header')
 
-      <main id="main" class="main">
-        @yield('content')
+      <main id="main" class="content-grid">
+          @yield('content')
       </main>
 
-      @hasSection('sidebar')
-        <aside class="sidebar">
-          @yield('sidebar')
-        </aside>
-      @endif
-
-      @include('sections.footer')
-    </div>
+      <div class="content-grid">
+        @include('sections.footer')
+      </div>
 
     @php(do_action('get_footer'))
     @php(wp_footer())
